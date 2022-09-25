@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2022
+ * MIT License
+ * Module AnassTouatiCoder_DiscountNotice
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="AnassTouatiCoder_InstantConfigurationCopy">
+        <sequence>
+            <module name="Magento_Config"/>
+        </sequence>
+    </module>
+</config>

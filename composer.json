@@ -1,0 +1,21 @@
+{
+    "name": "anasstouaticoder/magento2-module-instantconfigurationcopy",
+    "description": "The InstantConfigurationCopy module provides easy way to copy configuration field hints for admin in back office Magento 2.",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-config": "101.2.*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "AnassTouatiCoder\\InstantConfigurationCopy\\": ""
+        }
+    }
+}

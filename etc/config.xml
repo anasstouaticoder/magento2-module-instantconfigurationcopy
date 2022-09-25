@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2022
+ * MIT License
+ * Module AnassTouatiCoder_DiscountNotice
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dev>
+            <debug>
+                <system_path_hints>0</system_path_hints>
+            </debug>
+        </dev>
+    </default>
+</config>

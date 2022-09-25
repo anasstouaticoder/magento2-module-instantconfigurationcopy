@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright (c) 2022
+ * MIT License
+ * Module AnassTouatiCoder_DiscountNotice
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+$id = uniqid('AtouatiConfigPath');
+
+?>
+<?= $block->getBreakLine() ? '<br>' : '' ?>
+<strong><?= $escaper->escapeHtml(__('Path:'))?> </strong>
+<span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
+<button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
+        onclick="copy<?= $escaper->escapeJs($id) ?>('<?= $block->getPath() ?>',this)">
+    <?= $escaper->escapeHtml(__('Copy'))?>
+</button>
+<script>
+    function copy<?= $escaper->escapeJs($id)  ?>(path, element) {
+        navigator.clipboard.writeText(path);
+        element.innerHTML = '<?= $escaper->escapeHtml(__('Copied'))?>';
+        if (window.copy) {
+            document.querySelector('#' + window.copy).innerHTML = 'copy';
+        }
+        window.copy = '<?= $id ?>';
+    }
+</script>

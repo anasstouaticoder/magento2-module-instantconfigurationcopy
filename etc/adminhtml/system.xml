@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2022
+ * MIT License
+ * Module AnassTouatiCoder_DiscountNotice
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dev">
+            <group id="debug">
+                <field id="system_path_hints" translate="label,comment" type="select" sortOrder="100" showInDefault="1"
+                showInWebsite="0" showInStore="0">
+                    <label>Enable System Config Path Hints For Admin</label>
+                    <comment>Enable displaying system configuration paths in admin field</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
