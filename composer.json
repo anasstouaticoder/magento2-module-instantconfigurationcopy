@@ -1,12 +1,27 @@
 {
     "name": "anasstouaticoder/magento2-module-instantconfigurationcopy",
     "description": "The InstantConfigurationCopy module provides easy way to copy configuration field hints for admin in back office Magento 2.",
+    "keywords": [
+        "magento 2",
+        "back office",
+        "config hint path",
+        "hint path"
+    ],
+    "authors": [
+        {
+            "name": "Anass TOUATI",
+            "email": "anass1touati@gmail.com",
+            "homepage": "https://www.linkedin.com/in/anass-touati-9a3b028b/",
+            "role": "Leader"
+        }
+    ],
     "require": {
-        "magento/framework": "*",
-        "magento/module-config": "101.2.*"
+        "magento/framework": "*"
     },
     "type": "magento2-module",
     "version": "1.0.0",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "license": [
         "MIT"
     ],
