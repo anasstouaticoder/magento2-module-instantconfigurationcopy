@@ -15,7 +15,7 @@ Provide easy way to copy fields path in configuration section
 ## Installation
 \* = in production please use the `--keep-generated` option
 
-### install from composer
+### install from composer 2
 
  - In magento project root directory run command `composer require anasstouaticoder/magento2-module-instantconfigurationcopy`
  - Enable the module by running `php bin/magento module:enable AnassTouatiCoder_InstantConfigurationCopy`

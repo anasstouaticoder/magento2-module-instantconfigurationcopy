@@ -16,10 +16,11 @@
         }
     ],
     "require": {
-        "magento/framework": "*"
+        "magento/framework": "*",
+        "magento/module-config": "*"
     },
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "license": [

@@ -20,15 +20,16 @@ $id = uniqid('AtouatiConfigPath');
 <span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
 <button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
         onclick="copy<?= $escaper->escapeJs($id) ?>('<?= $block->getPath() ?>',this)">
-    <?= $escaper->escapeHtml(__('Copy'))?>
+    <?= $escaper->escapeHtml(__('Copy Hint Path'))?>
 </button>
 <script>
     function copy<?= $escaper->escapeJs($id)  ?>(path, element) {
+        let elementId = '<?= $id ?>';
         navigator.clipboard.writeText(path);
-        element.innerHTML = '<?= $escaper->escapeHtml(__('Copied'))?>';
-        if (window.copy) {
-            document.querySelector('#' + window.copy).innerHTML = 'copy';
+        element.innerHTML = '<?= $escaper->escapeHtml(__('Hint Path Copied'))?>';
+        if (window.copy && window.copy !== elementId) {
+            document.querySelector('#' + window.copy).innerHTML = '<?= $escaper->escapeHtml(__('Copy Hint Path'))?>';
         }
-        window.copy = '<?= $id ?>';
+        window.copy = elementId;
     }
 </script>
