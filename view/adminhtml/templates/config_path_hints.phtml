@@ -2,7 +2,7 @@
 /**
  * Copyright (c) 2022
  * MIT License
- * Module AnassTouatiCoder_DiscountNotice
+ * Module AnassTouatiCoder_InstantConfigurationCopy
  * Author Anass TOUATI anass1touati@gmail.com
  */
 
@@ -13,23 +13,44 @@ use Magento\Framework\View\Element\Template;
 /** @var Escaper $escaper */
 
 $id = uniqid('AtouatiConfigPath');
+$idValue = uniqid('AtouatiConfigvalue');
 
 ?>
 <?= $block->getBreakLine() ? '<br>' : '' ?>
-<strong><?= $escaper->escapeHtml(__('Path:'))?> </strong>
+<strong><?= $escaper->escapeHtml(__('Path:')) ?> </strong>
 <span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
 <button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
-        onclick="copy<?= $escaper->escapeJs($id) ?>('<?= $block->getPath() ?>',this)">
-    <?= $escaper->escapeHtml(__('Copy Hint Path'))?>
+        data-path="<?= $escaper->escapeHtmlAttr($block->getPath()) ?>">
+    <?= $escaper->escapeHtml(__('Copy Hint Path')) ?>
+</button>
+<br/>
+<button type="button" class="atouati-config-value-Copy" id="<?= $escaper->escapeHtmlAttr($idValue) ?>"
+        data-field-id="<?= $escaper->escapeHtmlAttr($block->getFieldId()) ?>">
+    <?= $escaper->escapeHtml(__('Copy Value')) ?>
 </button>
 <script>
-    function copy<?= $escaper->escapeJs($id)  ?>(path, element) {
-        let elementId = '<?= $id ?>';
-        navigator.clipboard.writeText(path);
-        element.innerHTML = '<?= $escaper->escapeHtml(__('Hint Path Copied'))?>';
-        if (window.copy && window.copy !== elementId) {
-            document.querySelector('#' + window.copy).innerHTML = '<?= $escaper->escapeHtml(__('Copy Hint Path'))?>';
+    document.getElementById('<?= $escaper->escapeJs($idValue) ?>').addEventListener('click', (e) => {
+        let element = e.target, id = element.id, fieldId = element.dataset.fieldId,
+            value = document.getElementById(fieldId) ? document.getElementById(fieldId).value : false;
+        if (value === false) {
+            return;
         }
-        window.copy = elementId;
-    }
+        navigator.clipboard.writeText(value);
+        element.innerHTML = '<?= $escaper->escapeHtml(__('Value Copied'))?>';
+        if (window.copyValue && window.copyValue !== id) {
+            document.querySelector('#' + window.copyValue).innerHTML = '<?= $escaper->escapeHtml(__('Copy Value'))?>';
+        }
+        window.copyValue = id;
+    });
+
+    document.getElementById('<?= $escaper->escapeJs($id) ?>').addEventListener('click', (e) => {
+        let element = e.target, id = element.id, path = element.dataset.path;
+        navigator.clipboard.writeText(path);
+        element.innerHTML = '<?= $escaper->escapeJs(__('Hint Path Copied'))?>';
+        if (window.copy && window.copy !== id) {
+            document.querySelector('#' + window.copy).innerHTML =
+                '<?= $escaper->escapeJs(__('Copy Hint Path'))?>';
+        }
+        window.copy = id;
+    });
 </script>

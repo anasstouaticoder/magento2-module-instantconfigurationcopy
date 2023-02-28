@@ -2,7 +2,7 @@
 /**
  * Copyright (c) 2022
  * MIT License
- * Module AnassTouatiCoder_DiscountNotice
+ * Module AnassTouatiCoder_InstantConfigurationCopy
  * Author Anass TOUATI anass1touati@gmail.com
  */
 

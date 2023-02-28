@@ -3,11 +3,12 @@
 /**
  * Copyright (c) 2022
  * MIT License
- * Module AnassTouatiCoder_DiscountNotice
+ * Module AnassTouatiCoder_InstantConfigurationCopy
  * Author Anass TOUATI anass1touati@gmail.com
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Config\Model\Config\Structure\Element\Field">
         <plugin name="atouati_add_system_path_to_field_comments"
                 type="AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element\Field"
