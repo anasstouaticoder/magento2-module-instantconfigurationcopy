@@ -41,7 +41,9 @@ CLI: `bin/magento config:set dev/debug/system_path_hints 1`
 
 ## Specifications
 
-This plugin provides easy way to copy configuration field paths into clipboard
+This plugin provides easy way to copy configuration field paths to clipboard.
+
+after improvement, it can also give you the possibility to copy config value to clipboard
 
 ## Usage
 
