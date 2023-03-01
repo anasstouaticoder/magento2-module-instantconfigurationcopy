@@ -16,7 +16,7 @@ $id = uniqid('AtouatiConfigPath');
 $idValue = uniqid('AtouatiConfigvalue');
 
 ?>
-<?= $block->getBreakLine() ? '<br>' : '' ?>
+<?= $block->getBreakLine() ? '<br/>' : '' ?>
 <strong><?= $escaper->escapeHtml(__('Path:')) ?> </strong>
 <span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
 <button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
@@ -24,17 +24,38 @@ $idValue = uniqid('AtouatiConfigvalue');
     <?= $escaper->escapeHtml(__('Copy Hint Path')) ?>
 </button>
 <br/>
-<button type="button" class="atouati-config-value-Copy" id="<?= $escaper->escapeHtmlAttr($idValue) ?>"
+<button type="button" data-field-value-type="<?= $escaper->escapeHtmlAttr($block->getFieldType()) ?>"
+        class="atouati-config-value-Copy primary"
+        id="<?= $escaper->escapeHtmlAttr($idValue) ?>"
         data-field-id="<?= $escaper->escapeHtmlAttr($block->getFieldId()) ?>">
     <?= $escaper->escapeHtml(__('Copy Value')) ?>
 </button>
 <script>
     document.getElementById('<?= $escaper->escapeJs($idValue) ?>').addEventListener('click', (e) => {
         let element = e.target, id = element.id, fieldId = element.dataset.fieldId,
-            value = document.getElementById(fieldId) ? document.getElementById(fieldId).value : false;
+            value = false;
+        if (element.dataset.fieldValueType === 'multiselect') {
+            let selectedValues = [];
+            let multiSelectElement = document.getElementById(fieldId);
+            for (let i = 0; i < multiSelectElement.options.length; i++) {
+                if (multiSelectElement.options[i].selected) {
+                    selectedValues.push(multiSelectElement.options[i].value);
+                }
+            }
+            value = selectedValues.join(', ');
+        } else {
+            let SelectedElement = document.getElementById(fieldId);
+            if (SelectedElement.tagName === "TABLE") {
+                // Do not support grid field
+
+                return;
+            }
+            value = SelectedElement ? SelectedElement.value : false;
+        }
         if (value === false) {
             return;
         }
+
         navigator.clipboard.writeText(value);
         element.innerHTML = '<?= $escaper->escapeHtml(__('Value Copied'))?>';
         if (window.copyValue && window.copyValue !== id) {

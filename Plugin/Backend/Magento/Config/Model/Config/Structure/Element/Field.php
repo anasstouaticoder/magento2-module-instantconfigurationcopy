@@ -16,8 +16,12 @@ use Magento\Framework\View\Element\Template;
 
 class Field
 {
+    /** @var string[]  */
     public const ALLOWED_FIELD_TYPE_LIST = [
-        'select', 'text'
+        'select',
+        'text',
+        'textarea',
+        'multiselect'
     ];
 
     /**
@@ -78,7 +82,8 @@ class Field
 
         if (in_array($field->getType(), self::ALLOWED_FIELD_TYPE_LIST)) {
             $fieldId = str_replace('/', '_', $field->getPath());
-            $block->setFieldId($fieldId);
+            $block->setFieldId($fieldId)
+                ->setFieldType($field->getType());
         }
 
         return $block->toHtml();

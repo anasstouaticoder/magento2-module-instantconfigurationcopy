@@ -5,6 +5,9 @@
         "magento 2",
         "back office",
         "config hint path",
+        "config value",
+        "copy past",
+        "copy to clipboard",
         "hint path"
     ],
     "authors": [
@@ -20,7 +23,7 @@
         "magento/module-config": "*"
     },
     "type": "magento2-module",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "license": [
