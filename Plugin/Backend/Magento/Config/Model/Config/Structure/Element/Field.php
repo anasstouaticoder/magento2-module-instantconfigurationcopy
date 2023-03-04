@@ -27,7 +27,17 @@ class Field
     /**
      * System path hints path
      */
-    public const XML_CONFIG_PATH_ENABLE_HINTS_PATH = 'dev/debug/system_path_hints';
+    public const XML_CONFIG_PATH_ENABLE_HINTS_PATH = 'dev/debug/system_path_hint';
+
+    /**
+     * System field value
+     */
+    public const XML_CONFIG_PATH_SYSTEM_FIELD_VALUE = 'dev/debug/system_field_value';
+
+    /**
+     * @var array
+     */
+    protected $config;
 
     /**
      * @var ScopeConfigInterface
@@ -48,6 +58,7 @@ class Field
     {
         $this->scopeConfig = $scopeConfig;
         $this->blockFactory = $blockFactory;
+        $this->initConfig();
     }
 
     /**
@@ -59,11 +70,10 @@ class Field
      */
     public function afterGetComment(MagentoField $subject, string $result): string
     {
-        if (!$this->scopeConfig->isSetFlag(self::XML_CONFIG_PATH_ENABLE_HINTS_PATH)) {
+        if (!in_array(true, $this->config, true)) {
             return $result;
         }
-
-        return $result .= $this->getConfigHintHTML($result, $subject);
+        return $result .= $this->getAdditionalHTML($result, $subject);
     }
 
     /**
@@ -73,11 +83,14 @@ class Field
      * @param MagentoField $field
      * @return string
      */
-    public function getConfigHintHTML(string $comment, MagentoField $field): string
+    public function getAdditionalHTML(string $comment, MagentoField $field): string
     {
-        $block = $this->blockFactory->createBlock(Template::class)
-            ->setTemplate('AnassTouatiCoder_InstantConfigurationCopy::config_path_hints.phtml')
+
+        $block = $this->blockFactory->createBlock(Template::class);
+        $block
+            ->setTemplate('AnassTouatiCoder_InstantConfigurationCopy::config_field_info.phtml')
             ->setBreakLine(strlen($comment))
+            ->addData($this->config)
             ->setPath($field->getConfigPath() ?? $field->getPath());
 
         if (in_array($field->getType(), self::ALLOWED_FIELD_TYPE_LIST)) {
@@ -87,5 +100,18 @@ class Field
         }
 
         return $block->toHtml();
+    }
+
+    /**
+     * HTML Renderer
+     *
+     * @return void
+     */
+    protected function initConfig(): void
+    {
+        $this->config = [
+            'display_path' => $this->scopeConfig->isSetFlag(self::XML_CONFIG_PATH_ENABLE_HINTS_PATH),
+            'display_value' => $this->scopeConfig->isSetFlag(self::XML_CONFIG_PATH_SYSTEM_FIELD_VALUE)
+        ];
     }
 }

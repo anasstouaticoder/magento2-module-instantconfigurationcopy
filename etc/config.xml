@@ -12,7 +12,8 @@
     <default>
         <dev>
             <debug>
-                <system_path_hints>0</system_path_hints>
+                <system_path_hint>1</system_path_hint>
+                <system_field_value>1</system_field_value>
             </debug>
         </dev>
     </default>

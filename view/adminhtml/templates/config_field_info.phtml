@@ -16,20 +16,35 @@ $id = uniqid('AtouatiConfigPath');
 $idValue = uniqid('AtouatiConfigvalue');
 
 ?>
-<?= $block->getBreakLine() ? '<br/>' : '' ?>
-<strong><?= $escaper->escapeHtml(__('Path:')) ?> </strong>
-<span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
-<button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
-        data-path="<?= $escaper->escapeHtmlAttr($block->getPath()) ?>">
-    <?= $escaper->escapeHtml(__('Copy Hint Path')) ?>
-</button>
-<br/>
-<button type="button" data-field-value-type="<?= $escaper->escapeHtmlAttr($block->getFieldType()) ?>"
-        class="atouati-config-value-Copy primary"
-        id="<?= $escaper->escapeHtmlAttr($idValue) ?>"
-        data-field-id="<?= $escaper->escapeHtmlAttr($block->getFieldId()) ?>">
-    <?= $escaper->escapeHtml(__('Copy Value')) ?>
-</button>
+<?php if ($block->getDisplayPath()): ?>
+    <?= $block->getBreakLine() ? '<br/>' : '' ?>
+    <strong><?= $escaper->escapeHtml(__('Path:')) ?> </strong>
+    <span class=atouati-config-path><?= $escaper->escapeHtml($block->getPath()) ?></span>
+    <button type="button" class="atouati-config-path-Copy" id="<?= $escaper->escapeHtmlAttr($id) ?>"
+            data-path="<?= $escaper->escapeHtmlAttr($block->getPath()) ?>">
+        <?= $escaper->escapeHtml(__('Copy Hint Path')) ?>
+    </button>
+    <br/>
+    <script>
+        document.getElementById('<?= $escaper->escapeJs($id) ?>').addEventListener('click', (e) => {
+            let element = e.target, id = element.id, path = element.dataset.path;
+            navigator.clipboard.writeText(path);
+            element.innerHTML = '<?= $escaper->escapeJs(__('Hint Path Copied'))?>';
+            if (window.copy && window.copy !== id) {
+                document.querySelector('#' + window.copy).innerHTML =
+                    '<?= $escaper->escapeJs(__('Copy Hint Path'))?>';
+            }
+            window.copy = id;
+        });
+    </script>
+<?php endif; ?>
+<?php if ($block->getDisplayValue()): ?>
+    <button type="button" data-field-value-type="<?= $escaper->escapeHtmlAttr($block->getFieldType()) ?>"
+            class="atouati-config-value-Copy primary"
+            id="<?= $escaper->escapeHtmlAttr($idValue) ?>"
+            data-field-id="<?= $escaper->escapeHtmlAttr($block->getFieldId()) ?>">
+        <?= $escaper->escapeHtml(__('Copy Value')) ?>
+    </button>
 <script>
     document.getElementById('<?= $escaper->escapeJs($idValue) ?>').addEventListener('click', (e) => {
         let element = e.target, id = element.id, fieldId = element.dataset.fieldId,
@@ -63,15 +78,5 @@ $idValue = uniqid('AtouatiConfigvalue');
         }
         window.copyValue = id;
     });
-
-    document.getElementById('<?= $escaper->escapeJs($id) ?>').addEventListener('click', (e) => {
-        let element = e.target, id = element.id, path = element.dataset.path;
-        navigator.clipboard.writeText(path);
-        element.innerHTML = '<?= $escaper->escapeJs(__('Hint Path Copied'))?>';
-        if (window.copy && window.copy !== id) {
-            document.querySelector('#' + window.copy).innerHTML =
-                '<?= $escaper->escapeJs(__('Copy Hint Path'))?>';
-        }
-        window.copy = id;
-    });
 </script>
+<?php endif;?>
