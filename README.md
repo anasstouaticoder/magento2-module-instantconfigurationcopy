@@ -1,4 +1,4 @@
-# Mage2 Module AnassTouatiCoder InstantConfigurationCopy
+# Magento 2 Module AnassTouatiCoder InstantConfigurationCopy
 
     ``anasstouaticoder/magento2-module-instantconfigurationcopy``
 
@@ -6,11 +6,12 @@
  - [Installation](#markdown-header-installation)
  - [Configuration](#markdown-header-configuration)
  - [Specifications](#markdown-header-specifications)
- - [Attributes](#markdown-header-attributes)
+ - [usage](#markdown-header-usage)
+ - [License](#markdown-header-License)
 
 
 ## Main Functionalities
-Provide easy way to copy fields path in configuration section
+Provide easy way to copy fields path and value in configuration section
 
 ## Installation
 \* = in production please use the `--keep-generated` option
@@ -32,18 +33,20 @@ Provide easy way to copy fields path in configuration section
 
 ### Type 1 : In Back Office
 After installing the plugin, it is easy to activate it, login in as administrator, then navigate 
-to Stores => Configuration => Advanced => Developer => Debug => Enable System Config Path Hints For Admin finally select yes and save
-now under each configuration field you see that there is path : configuration path and copy button
+to Stores => Configuration => Advanced => Developer => Debug => Enable System Config Path Hints For Admin or
+Enable System Config copy value For Admin, finally select yes and save.
+now under each configuration field you see that there is path : configuration path, copy  path button and copy value button
 
 ### Type 2 : Using Magento CLI
 
-CLI: `bin/magento config:set dev/debug/system_path_hints 1`
+Enabling field paths: `bin/magento config:set dev/debug/system_path_hint 1`
+Enabling Values: `bin/magento config:set dev/debug/system_field_value 1`
 
 ## Specifications
 
-This plugin provides easy way to copy configuration field paths to clipboard.
+This plugin provides easy way to copy configuration field paths or its value to clipboard.
 
-also it provides easy copy to clipboard the values of fields : text, textarea, select, and multiselect
+For copying value part actually its support these field types : [text, textarea, select, and multiselect]()
 
 ## Usage
 
