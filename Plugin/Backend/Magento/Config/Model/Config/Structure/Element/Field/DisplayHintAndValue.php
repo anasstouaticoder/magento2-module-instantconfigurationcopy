@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2022
  * MIT License
@@ -7,23 +8,13 @@
  */
 declare(strict_types=1);
 
-namespace AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element;
+namespace AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element\Field;
 
 use Magento\Config\Model\Config\Structure\Element\Field as MagentoField;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\View\Element\BlockFactory;
 use Magento\Framework\View\Element\Template;
 
-class Field
+class DisplayHintAndValue extends FieldPlugin
 {
-    /** @var string[]  */
-    public const ALLOWED_FIELD_TYPE_LIST = [
-        'select',
-        'text',
-        'textarea',
-        'multiselect'
-    ];
-
     /**
      * System path hints path
      */
@@ -35,36 +26,9 @@ class Field
     public const XML_CONFIG_PATH_SYSTEM_FIELD_VALUE = 'dev/debug/system_field_value';
 
     /**
-     * @var array
-     */
-    protected $config;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var BlockFactory
-     */
-    private $blockFactory;
-
-    /**
-     * FieldPlugin constructor.
-     * @param ScopeConfigInterface $scopeConfig
-     * @param BlockFactory $blockFactory
-     */
-    public function __construct(ScopeConfigInterface $scopeConfig, BlockFactory $blockFactory)
-    {
-        $this->scopeConfig = $scopeConfig;
-        $this->blockFactory = $blockFactory;
-        $this->initConfig();
-    }
-
-    /**
      * Add path to the field comment
      *
-     * @param \Magento\Config\Model\Config\Structure\Element\Field $subject
+     * @param MagentoField $subject
      * @param string $result
      * @return string
      */
@@ -73,7 +37,7 @@ class Field
         if (!in_array(true, $this->config, true)) {
             return $result;
         }
-        return $result .= $this->getAdditionalHTML($result, $subject);
+        return $result . $this->getAdditionalHTML($result, $subject);
     }
 
     /**
@@ -85,28 +49,22 @@ class Field
      */
     public function getAdditionalHTML(string $comment, MagentoField $field): string
     {
-
         $block = $this->blockFactory->createBlock(Template::class);
+        $fieldPath = $this->getConfigPath($field);
         $block
             ->setTemplate('AnassTouatiCoder_InstantConfigurationCopy::config_field_info.phtml')
             ->setBreakLine(strlen($comment))
             ->addData($this->config)
-            ->setPath($field->getConfigPath() ?? $field->getPath());
+            ->setPath($fieldPath);
 
         if (in_array($field->getType(), self::ALLOWED_FIELD_TYPE_LIST)) {
-            $fieldId = str_replace('/', '_', $field->getPath());
-            $block->setFieldId($fieldId)
+            $block->setFieldId($this->getFieldHTMLId($field))
                 ->setFieldType($field->getType());
         }
 
         return $block->toHtml();
     }
 
-    /**
-     * HTML Renderer
-     *
-     * @return void
-     */
     protected function initConfig(): void
     {
         $this->config = [

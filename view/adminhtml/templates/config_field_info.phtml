@@ -60,6 +60,8 @@ $idValue = uniqid('AtouatiConfigvalue');
             value = selectedValues.join(', ');
         } else {
             let SelectedElement = document.getElementById(fieldId);
+            console.log(fieldId);
+            console.log(SelectedElement);
             if (SelectedElement.tagName === "TABLE") {
                 // Do not support grid field
 
