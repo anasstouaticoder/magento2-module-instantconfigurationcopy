@@ -39,14 +39,15 @@ now under each configuration field you see that there is path : configuration pa
 
 ### Type 2 : Using Magento CLI
 
-Enabling field paths: `bin/magento config:set dev/debug/system_path_hint 1`
-Enabling Values: `bin/magento config:set dev/debug/system_field_value 1`
+Enabling display field paths and copy path button : `bin/magento config:set dev/debug/system_path_hint 1`
+Enabling copy value button: `bin/magento config:set dev/debug/system_field_value 1`
+Enabling displaying override value of sub scopes : `bin/magento config:set dev/debug/system_override_values 1`
 
 ## Specifications
 
-This plugin provides easy way to copy configuration field paths or its value to clipboard.
+This plugin provides easy way to copy configuration field paths or its value to the clipboard. It also displays all values configured in sub scopes websites or in a tooltip.
 
-For copying value part actually its support these field types : [text, textarea, select, and multiselect]()
+For copying value and displaying sub values in tooltip parts, both support these field types : [text, textarea, select, and multiselect]()
 
 ## Usage
 

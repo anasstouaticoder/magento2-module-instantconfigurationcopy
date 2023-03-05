@@ -19,11 +19,20 @@
                     Enable displaying system configuration paths and coping it to clipboard in admin area]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="system_field_value" translate="label,comment" type="select" sortOrder="100" showInDefault="1"
+                <field id="system_field_value" translate="label,comment" type="select" sortOrder="120" showInDefault="1"
                        showInWebsite="0" showInStore="0">
                     <label>Enable System Config copy value For Admin</label>
                     <comment><![CDATA[
                     Enable copy system configuration value to clipboard in admin area
+                    <br/><br/><strong style="color:green">Allowed Field Types</strong><p>Text, Textarea, Select and
+                    Multiselect</p>]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="system_override_values" translate="label,comment" type="select" sortOrder="130"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable displaying overrode values for Admin</label>
+                    <comment><![CDATA[
+                    Enable displaying  overrode configuration value on a tooltip next to label in admin area
                     <br/><br/><strong style="color:green">Allowed Field Types</strong><p>Text, Textarea, Select and
                     Multiselect</p>]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

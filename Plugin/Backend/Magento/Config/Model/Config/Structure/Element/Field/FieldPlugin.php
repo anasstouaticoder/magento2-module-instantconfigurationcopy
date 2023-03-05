@@ -1,4 +1,11 @@
 <?php
+/**
+ * Copyright (c) 2022
+ * MIT License
+ * Module AnassTouatiCoder_InstantConfigurationCopy
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+declare(strict_types=1);
 
 namespace AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element\Field;
 
@@ -51,6 +58,8 @@ abstract class FieldPlugin
     abstract protected function initConfig(): void;
 
     /**
+     * Get field config path
+     *
      * @param MagentoField $field
      * @return string|null
      */

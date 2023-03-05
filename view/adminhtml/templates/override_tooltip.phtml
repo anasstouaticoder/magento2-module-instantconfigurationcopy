@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright (c) 2023
+ * MIT License
+ * Module AnassTouatiCoder_InstantConfigurationCopy
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+?>
+<div class="admin__field-tooltip" style="margin-left: 10px;margin-right: 20px;margin-top: -5px;">
+    <a class="admin__field-tooltip-action action-help" target="_blank" tabindex="1" attr="href: tooltip.link">
+        <span></span>
+    </a>
+    <div class="admin__field-tooltip-content" style="text-align: start;">
+        <div><strong>Children scopes:</strong></div>
+        <?= /* @noEscape */ $block->getToolTipContent(); ?>
+    </div>
+</div>

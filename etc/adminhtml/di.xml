@@ -13,5 +13,8 @@
         <plugin name="atouati_add_system_path_and_value_field_comments"
                 type="AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element\Field\DisplayHintAndValue"
                 sortOrder="1"/>
+        <plugin name="atouati_add_display_overrided_values"
+                type="AnassTouatiCoder\InstantConfigurationCopy\Plugin\Backend\Magento\Config\Model\Config\Structure\Element\Field\DisplayOverrideValue"
+                sortOrder="2"/>
     </type>
 </config>
