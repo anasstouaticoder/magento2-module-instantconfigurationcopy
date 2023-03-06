@@ -66,7 +66,7 @@ class DisplayOverrideValue extends FieldPlugin
             return $result;
         }
 
-        return $result . $this->getToolTipHTML($subject);
+        return $result . $this->getToolTipHTML($subject, $result);
     }
 
     /**
@@ -75,7 +75,7 @@ class DisplayOverrideValue extends FieldPlugin
      * @param MagentoField $field
      * @return string
      */
-    private function getToolTipHTML(MagentoField $field)
+    private function getToolTipHTML(MagentoField $field, $label)
     {
         $tooltip = '';
         $lines = [];
@@ -104,6 +104,7 @@ class DisplayOverrideValue extends FieldPlugin
         if (count($lines) > 0) {
             $tooltipContent = implode('<br />', $lines);
             $tooltip = $this->blockFactory->createBlock(Template::class)
+                ->setFieldLabel($label)
                 ->setTemplate('AnassTouatiCoder_InstantConfigurationCopy::override_tooltip.phtml')
                 ->setToolTipContent($tooltipContent)
                 ->toHtml();
@@ -158,13 +159,13 @@ class DisplayOverrideValue extends FieldPlugin
             switch ($scopeType) {
                 case self::SCOPE_TYPE_STORES:
                     return __(
-                        'Store <code>%1</code>: <br/>"%2"',
+                        '<span style="color: #86de00">Store</span> <code>%1</code>: <br/>"%2"',
                         $scope->getCode(),
                         $this->getValueLabel($field, $scopeValue)
                     );
                 case self::SCOPE_TYPE_WEBSITES:
                     return __(
-                        'Website <code>%1</code>: <br/>"%2"',
+                        '<span style = "color: #0a6c9f">Website</span> <code>%1</code>: <br/>"%2"',
                         $scope->getCode(),
                         $this->getValueLabel($field, $scopeValue)
                     );

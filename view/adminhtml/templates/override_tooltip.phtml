@@ -16,7 +16,7 @@ $id = uniqid('AtouatiConfigModal');
 ?>
 <div class="admin__field-tooltip" style="margin-left: 10px;margin-right: 20px;margin-top: -5px;">
     <a class="admin__field-tooltip-action action-help" id="tooltip_<?= /* @noEscape */ $id ?>" target="_blank"
-       tabindex="1" attr="href: tooltip.link">
+       tabindex="1" attr="href: tooltip.link" style="cursor: pointer">
         <span></span>
     </a>
 </div>
@@ -27,14 +27,15 @@ $id = uniqid('AtouatiConfigModal');
 </div>
 <script>
     require([
+        'jquery',
         'Magento_Ui/js/modal/modal'
-    ], function (modal) {
+    ], function ($, modal) {
         $(document).ready(function () {
             var options = {
                 type: 'popup',
                 responsive: true,
                 innerScroll: true,
-                title: '<?= /* @noEscape */ __('Children scopes:') ?>'
+                title: '<?= /* @noEscape */ __('%1 Children scopes:', $block->getFieldLabel()) ?>'
             };
             $("#tooltip_<?= /* @noEscape */ $id ?>").on('click', function () {
                 $("#popup-modal-main_<?= /* @noEscape */ $id ?>").modal(options).modal('openModal');
