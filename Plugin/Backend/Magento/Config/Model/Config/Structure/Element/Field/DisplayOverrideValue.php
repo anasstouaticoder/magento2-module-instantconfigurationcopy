@@ -178,9 +178,9 @@ class DisplayOverrideValue extends FieldPlugin
      *
      * @param MagentoField $field
      * @param string $scopeValue
-     * @return string
+     * @return string|Phrase
      */
-    private function getValueLabel(MagentoField $field, string $scopeValue): string
+    private function getValueLabel(MagentoField $field, string $scopeValue)
     {
         $scopeValue = trim($scopeValue);
         if ($field->hasOptions()) {
