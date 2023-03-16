@@ -15,7 +15,7 @@
  - [Configuration](#markdown-header-configuration)
  - [Specifications](#markdown-header-specifications)
  - [usage](#markdown-header-usage)
- - [License](#markdown-header-License)
+ - [License](#markdown-header-license)
 
 
 ## Main Functionalities
