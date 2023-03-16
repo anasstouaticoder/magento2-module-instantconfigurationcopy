@@ -1,4 +1,12 @@
-# Magento 2 Module AnassTouatiCoder InstantConfigurationCopy
+<h1 style="text-align: center;">Magento 2 Module AnassTouatiCoder InstantConfigurationCopy</h1>
+<div style="text-align: center;">
+  <p>Copy field path and value, display its override values in parent scope</p>
+  <img src="https://img.shields.io/badge/magento-2.2%20|%202.3%20|%202.4-brightgreen.svg?logo=magento&longCache=true&style=flat-square" alt="Supported Magento Versions" />
+  <a href="https://packagist.org/packages/anasstouaticoder/magento2-module-instantconfigurationcopy" target="_blank"><img src="https://img.shields.io/packagist/v/anasstouaticoder/magento2-module-instantconfigurationcopy.svg?style=flat-square" alt="Latest Stable Version" /></a>
+  <a href="https://packagist.org/packages/anasstouaticoder/magento2-module-instantconfigurationcopy" target="_blank"><img src="https://poser.pugx.org/anasstouaticoder/magento2-module-instantconfigurationcopy/downloads" alt="Composer Downloads" /></a>
+  <a href="https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity" target="_blank"><img src="https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square" alt="Maintained - Yes" /></a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
+</div>
 
     ``anasstouaticoder/magento2-module-instantconfigurationcopy``
 
