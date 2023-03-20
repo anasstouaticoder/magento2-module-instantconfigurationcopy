@@ -23,7 +23,7 @@ class DisplayHintAndValue extends FieldPlugin
     /**
      * System field value
      */
-    public const XML_CONFIG_PATH_SYSTEM_FIELD_VALUE = 'anasstouaticoder_dev/System_config/system_field_value';
+    public const XML_CONFIG_PATH_SYSTEM_FIELD_VALUE = 'anasstouaticoder_dev/system_config/system_field_value';
 
     /**
      * Add path to the field comment
