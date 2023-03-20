@@ -47,11 +47,11 @@ now under each configuration field you see that there is path : configuration pa
 
 ### Type 2 : Using Magento CLI
 
-Enabling display field paths and copy path button : `bin/magento config:set dev/debug/system_path_hint 1`
+Enabling display field paths and copy path button : `bin/magento config:set 'anasstouaticoder_dev/system_config/system_path_hint 1`
 
-Enabling copy value button: `bin/magento config:set dev/debug/system_field_value 1`
+Enabling copy value button: `bin/magento config:set 'anasstouaticoder_dev/system_config/system_field_value 1`
 
-Enabling display override value of sub scopes : `bin/magento config:set dev/debug/system_override_values 1`
+Enabling display override value of sub scopes : `bin/magento config:set 'anasstouaticoder_dev/system_config/system_override_values 1`
 
 ## Specifications
 

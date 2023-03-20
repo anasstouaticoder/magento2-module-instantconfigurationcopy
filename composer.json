@@ -19,7 +19,9 @@
         }
     ],
     "require": {
+        "anasstouaticoder/magento2-module-base": "^1",
         "magento/framework": "*",
+        "magento/module-config": "*"
         "magento/module-config": "*"
     },
     "type": "magento2-module",

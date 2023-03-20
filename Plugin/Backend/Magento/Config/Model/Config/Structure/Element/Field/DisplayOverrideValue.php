@@ -18,7 +18,7 @@ class DisplayOverrideValue extends FieldPlugin
 
     public const SCOPE_TYPE_STORES = 'stores';
 
-    public const XML_CONFIG_PATH_SYSTEM_OVERRIDE_VALUES = 'dev/debug/system_override_values';
+    public const XML_CONFIG_PATH_SYSTEM_OVERRIDE_VALUES = 'anasstouaticoder_dev/System_config/system_override_values';
 
     /** @var Escaper */
     private $escaper;

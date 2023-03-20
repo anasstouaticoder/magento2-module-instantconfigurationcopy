@@ -12,6 +12,7 @@
     <module name="AnassTouatiCoder_InstantConfigurationCopy">
         <sequence>
             <module name="Magento_Config"/>
+            <module name="AnassTouatiCoder_Base"/>
         </sequence>
     </module>
 </config>
