@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2022
+ * Copyright (c) 2023
  * MIT License
  * Module AnassTouatiCoder_InstantConfigurationCopy
  * Author Anass TOUATI anass1touati@gmail.com
@@ -25,18 +25,6 @@ $idValue = uniqid('AtouatiConfigvalue');
         <?= $escaper->escapeHtml(__('Copy Hint Path')) ?>
     </button>
     <br/>
-    <script>
-        document.getElementById('<?= $escaper->escapeJs($id) ?>').addEventListener('click', (e) => {
-            let element = e.target, id = element.id, path = element.dataset.path;
-            navigator.clipboard.writeText(path);
-            element.innerHTML = '<?= $escaper->escapeJs(__('Hint Path Copied'))?>';
-            if (window.copy && window.copy !== id) {
-                document.querySelector('#' + window.copy).innerHTML =
-                    '<?= $escaper->escapeJs(__('Copy Hint Path'))?>';
-            }
-            window.copy = id;
-        });
-    </script>
 <?php endif; ?>
 <?php if ($block->getDisplayValue()): ?>
     <button type="button" data-field-value-type="<?= $escaper->escapeHtmlAttr($block->getFieldType()) ?>"
@@ -45,40 +33,4 @@ $idValue = uniqid('AtouatiConfigvalue');
             data-field-id="<?= $escaper->escapeHtmlAttr($block->getFieldId()) ?>">
         <?= $escaper->escapeHtml(__('Copy Value')) ?>
     </button>
-<script>
-    document.getElementById('<?= $escaper->escapeJs($idValue) ?>').addEventListener('click', (e) => {
-        let element = e.target, id = element.id, fieldId = element.dataset.fieldId,
-            value = false;
-        if (element.dataset.fieldValueType === 'multiselect') {
-            let selectedValues = [];
-            let multiSelectElement = document.getElementById(fieldId);
-            for (let i = 0; i < multiSelectElement.options.length; i++) {
-                if (multiSelectElement.options[i].selected) {
-                    selectedValues.push(multiSelectElement.options[i].value);
-                }
-            }
-            value = selectedValues.join(', ');
-        } else {
-            let SelectedElement = document.getElementById(fieldId);
-            console.log(fieldId);
-            console.log(SelectedElement);
-            if (SelectedElement.tagName === "TABLE") {
-                // Do not support grid field
-
-                return;
-            }
-            value = SelectedElement ? SelectedElement.value : false;
-        }
-        if (value === false) {
-            return;
-        }
-
-        navigator.clipboard.writeText(value);
-        element.innerHTML = '<?= $escaper->escapeHtml(__('Value Copied'))?>';
-        if (window.copyValue && window.copyValue !== id) {
-            document.querySelector('#' + window.copyValue).innerHTML = '<?= $escaper->escapeHtml(__('Copy Value'))?>';
-        }
-        window.copyValue = id;
-    });
-</script>
-<?php endif;?>
+<?php endif; ?>

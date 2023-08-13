@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2023
+ * MIT License
+ * Module AnassTouatiCoder_InstantConfigurationCopy
+ * Author Anass TOUATI anass1touati@gmail.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<head>
+    <script src="AnassTouatiCoder_InstantConfigurationCopy::js/copy-config-field-info.js"/>
+</head>
+<body>
+</body>
+</page>
