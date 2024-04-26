@@ -8,6 +8,37 @@ require([
     'jquery',
     'mage/translate'
 ], function ($, $t) {
+
+    // Use copy to clipboard for all browsers
+    function copyToClipboard(text)
+    {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(path);
+        } else {
+            if (window.clipboardData && window.clipboardData.setData) {
+                // IE: prevent textarea being shown while dialog is visible
+                return window.clipboardData.setData("Text", text);
+
+            } else if (document.queryCommandSupported &&
+                document.queryCommandSupported("copy")) {
+                let textarea = document.createElement("textarea");
+                textarea.textContent = text;
+                // Prevent scrolling to bottom of page in MS Edge
+                textarea.style.position = "fixed";
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    // Security exception may be thrown by some browsers
+                    return document.execCommand("copy");
+                } catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return false;
+                } finally {
+                    document.body.removeChild(textarea);
+                }
+            }
+        }
+    }
     document.addEventListener('click', function (e) {
         let target = e.target, aTouatiCopyValueText = $t('Copy Value'),
             aTouatiCopyPathValueText = $t('Copy Hint Path');
@@ -16,16 +47,14 @@ require([
             let element = e.target, id = element.id;
             if (target.classList.contains('atouati-config-path-Copy')) {
                 const path = element.dataset.path;
-                navigator.clipboard.writeText(path);
-                element.innerHTML = $t('Hint Path Copied');
-                if (window.ATouatiCopyPath !== id) {
-                    if (window.ATouatiCopyValue) {
-                        document.querySelector('#' + window.ATouatiCopyValue).innerHTML = aTouatiCopyValueText;
-                    }
-                    if (window.ATouatiCopyPath) {
-                        document.querySelector('#' + window.ATouatiCopyPath).innerHTML = aTouatiCopyPathValueText;
-                    }
+                copyToClipboard(path);
+                if (window.ATouatiCopyValue) {
+                    document.querySelector('#' + window.ATouatiCopyValue).innerHTML = aTouatiCopyValueText;
                 }
+                if (window.ATouatiCopyPath) {
+                    document.querySelector('#' + window.ATouatiCopyPath).innerHTML = aTouatiCopyPathValueText;
+                }
+                element.innerHTML = $t('Hint Path Copied');
                 window.ATouatiCopyPath = id;
             } else if (target.classList.contains('atouati-config-value-Copy')) {
                 let fieldId = element.dataset.fieldId, value = false;
@@ -53,17 +82,14 @@ require([
                 if (value === false) {
                     return;
                 }
-
-                navigator.clipboard.writeText(value);
-                element.innerHTML = $t('Value Copied');
-                if (window.ATouatiCopyValue !== id) {
-                    if (window.ATouatiCopyPath) {
-                        document.querySelector('#' + window.ATouatiCopyPath).innerHTML = aTouatiCopyPathValueText;
-                    }
-                    if (window.ATouatiCopyValue) {
-                        document.querySelector('#' + window.ATouatiCopyValue).innerHTML = aTouatiCopyValueText;
-                    }
+                copyToClipboard(value);
+                if (window.ATouatiCopyPath) {
+                    document.querySelector('#' + window.ATouatiCopyPath).innerHTML = aTouatiCopyPathValueText;
                 }
+                if (window.ATouatiCopyValue) {
+                    document.querySelector('#' + window.ATouatiCopyValue).innerHTML = aTouatiCopyValueText;
+                }
+                element.innerHTML = $t('Value Copied');
                 window.ATouatiCopyValue = id;
             }
         }
