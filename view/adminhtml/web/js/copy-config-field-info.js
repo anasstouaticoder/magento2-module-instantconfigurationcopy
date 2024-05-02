@@ -13,7 +13,7 @@ require([
     function copyToClipboard(text)
     {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            return navigator.clipboard.writeText(path);
+            return navigator.clipboard.writeText(text);
         } else {
             if (window.clipboardData && window.clipboardData.setData) {
                 // IE: prevent textarea being shown while dialog is visible
