@@ -19,13 +19,13 @@
         }
     ],
     "require": {
-        "anasstouaticoder/magento2-module-base": "^1",
+        "anasstouaticoder/magento2-module-base": "^1.2.18",
         "magento/framework": "*",
         "magento/module-config": "*",
-        "php": "~7.0||~7.1||~7.2||~7.3||~7.4.0||~8.1||~8.2"
+        "php": "^7.0 || ^8.0"
     },
     "type": "magento2-module",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "license": [
